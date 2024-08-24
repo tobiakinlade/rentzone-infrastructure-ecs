@@ -21,4 +21,10 @@ variable "database_snapshot_identifier" {}
 variable "database_instance_class" {}
 variable "database_instance_identifier" {}
 
+# acm
+
+variable "domain_name" {}
+variable "alternative_names" {}
+
+
 

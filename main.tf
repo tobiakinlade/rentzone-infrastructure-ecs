@@ -58,3 +58,10 @@ module "rds" {
   database_instance_identifier = var.database_instance_identifier
   database_security_group_id   = module.security_group.database_security_group_id
 }
+
+# request ssl certificate
+module "acm" {
+  source            = "git@github.com:tobiakinlade/terraform-modules.git//acm"
+  domain_name       = var.domain_name
+  alternative_names = var.alternative_names
+}

@@ -35,3 +35,12 @@ module "nat_gateway" {
   private_data_subnet_az1_id = module.vpc.private_data_subnet_az1_id
   private_data_subnet_az2_id = module.vpc.private_data_subnet_az2_id
 }
+
+# create security group
+module "security_group" {
+  source       = "git@github.com:tobiakinlade/terraform-modules.git//security-group"
+  project_name = local.project_name
+  environment  = local.environment
+  vpc_id       = module.vpc.vpc_id
+  ssh_ip       = var.ssh_ip
+}

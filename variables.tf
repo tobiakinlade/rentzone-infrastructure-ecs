@@ -15,3 +15,10 @@ variable "private_data_subnet_az2_cidr" {}
 
 # security group variable
 variable "ssh_ip" {}
+
+# rds
+variable "database_snapshot_identifier" {}
+variable "database_instance_class" {}
+variable "database_instance_identifier" {}
+
+

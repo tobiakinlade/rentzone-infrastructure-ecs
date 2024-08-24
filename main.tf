@@ -44,3 +44,17 @@ module "security_group" {
   vpc_id       = module.vpc.vpc_id
   ssh_ip       = var.ssh_ip
 }
+
+# launch rds instance
+module "rds" {
+  source                       = "git@github.com:tobiakinlade/terraform-modules.git//rds"
+  project_name                 = local.project_name
+  environment                  = local.environment
+  private_data_subnet_az1_id   = module.vpc.private_data_subnet_az1_id
+  private_data_subnet_az2_id   = module.vpc.private_data_subnet_az2_id
+  database_snapshot_identifier = var.database_snapshot_identifier
+  database_instance_class      = var.database_instance_class
+  availability_zone_1          = module.vpc.availability_zone_1
+  database_instance_identifier = var.database_instance_identifier
+  database_security_group_id   = module.security_group.database_security_group_id
+}

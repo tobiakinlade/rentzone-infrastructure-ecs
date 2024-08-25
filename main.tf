@@ -79,3 +79,11 @@ module "alb" {
   vpc_id                = module.vpc.vpc_id
   certificate_arn       = module.acm.certificate_arn
 }
+
+module "s3" {
+  source = "git@github.com:tobiakinlade/terraform-modules.git//s3"
+
+  project_name         = local.project_name
+  env_file_bucket_name = var.env_file_bucket_name
+  env_file_name        = var.env_file_name
+}
